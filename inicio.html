@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hey DJ</title>
+<link rel="stylesheet" type="text/css" href="js/fancy/source/jquery.fancybox.css">
+<link rel="stylesheet" type="text/css" href="js/introjs/introjs.css">
+<link rel="stylesheet" type="text/css" href="js/jquery.ilightbox-master/css/jquery.lightbox.css">
+<link rel="stylesheet" type="text/css" href="js/colorbox-master/colorbox-master/example1/colorbox.css"> 
+<script src="createjs.js"></script>
+<script src="recorder.js"></script>
+<script src="js/fancy/lib/jquery-1.10.1.min.js"></script>
+<script src="js/fancy/source/jquery.fancybox.js"></script>
+<script src="js/fancy/source/jquery.fancybox.pack.js"></script>
+<script src="js/introjs/intro.js"></script>
+<script src="js/jquery.ilightbox-master/js/jquery.lightbox.min.js"></script>
+<script src="js/colorbox-master/colorbox-master/jquery.colorbox-min.js"></script>
+<script>
+
+var som = ("set.mp3","set");
+var dir = "./";
+var controle;
+
+
+function registro(){	
+    createjs.Sound.on("fileload", this.toca, this);
+	createjs.Sound.registerSound("./sounds/set.mp3","set");	
+}
+
+function toca(){
+  var controle = createjs.Sound.play("set",{volume:0.2,loop:-1});
+}
+</script>
+<style type="text/css">
+ body {
+	background-color: #000000;
+ }
+ #principal {
+	background-image: url(imagens/Background.jpg);
+	background-position: center;
+	height: 600px;
+	width: 900px;
+	position: absolute;
+	background-color: #000000;
+	left: 180px;
+	right: auto;
+	bottom: auto;
+}
+#menu1{
+	background-image: url(imagens/menu1.png);
+	width: 143px;
+	left: 211px;
+	top: 265px;
+	position: absolute;
+	height: 168px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+#menu2{
+	background-image: url(imagens/menu2.png);
+	width: 143px;
+	left: 400px;
+	top: 265px;
+	position: absolute;
+	height: 168px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+#menu3{
+	width: 143px;
+	left: 580px;
+	top: 265px;
+	position: absolute;
+	height: 168px;
+	width: 126px;
+	background-image: url(imagens/menu3.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+</style>
+
+</head>
+
+<body onload="registro();">
+<div id="principal" >
+
+ <input type="button" id="menu1" onmouseover="background(this);" onmouseout="muda(this)" onclick="next(this)"></input>
+ <input type="button" id="menu2" onmouseover="background(this)" onmouseout="muda(this)" onclick="next(this)"></input>
+ <input type="button" id="menu3" onmouseover="background(this)" onmouseout="muda(this)" onclick="divclick();"></input>
+ <script>
+ 
+ createjs.Sound.play("set");
+x = document.getElementById("menu1");
+y = document.getElementById("menu2");
+z = document.getElementById("menu3");
+function background(valor){
+ if(valor.id == "menu1"){
+	 valor.style.backgroundImage='url(imagens/Page1_r2_c2.png)';
+ }
+ if(valor.id == "menu2"){
+	  valor.style.backgroundImage='url(imagens/Page1_r2_c4.png)';
+ }
+ if(valor.id == "menu3"){
+	 valor.style.backgroundImage='url(imagens/Page1_r2_c6.png)';
+ }
+}
+
+function muda(valor){
+	if(valor.id == "menu1"){
+	 valor.style.backgroundImage='url(imagens/menu1.png)';
+ }
+ if(valor.id == "menu2"){
+	  valor.style.backgroundImage='url(imagens/menu2.png)';
+ }
+ if(valor.id == "menu3"){
+	 valor.style.backgroundImage='url(imagens/menu3.png)';
+ }
+}
+
+function next(valor){
+	if(valor.id == "menu1"){
+	window.location.assign("teoria.html");
+ }
+ if(valor.id == "menu2"){
+	 window.location.assign("app.html");
+ }
+}
+
+function divclick(){
+	$.colorbox({transition:"none",width:830,height:500,href:"sobre.html"});
+}
+	
+</script>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,485 @@
+body{
+background-color:#1E1E1E;
+}
+#principal {
+	background-image: url(imagens/background_i.png);
+	height: 605px;
+	width: 902px;
+	position: absolute;
+	background-position: center;
+	left: 105px;
+	top: 0px;
+}
+
+#home {
+	background-image: url(imagens/images/home_03.jpg);
+	position : absolute;
+	left : 62px;
+	top : 43px;
+	width : 233px;
+	height : 51px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#logo{
+  background-image:url(imagens/images/logodj_03.jpg);
+  position : absolute ;
+  left : 712px;
+  top : 46px;
+  width : 127px;
+  height : 63px;
+}
+#mixer{
+	background-image: url(imagens/images/mixer_07.jpg);
+	position : absolute;
+	left : 191px;
+	top : 166px;
+	width : 607px;
+	height : 322px;
+	background-repeat: no-repeat;
+}
+
+#house{
+	position : absolute;
+	left : 65px;
+	top : 163px;
+	width : 94px;
+	height : 29px;
+	background-image: url(imagens/botoes%20parte%201/botao_r1_c1.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+
+#eletro{
+	position : absolute;
+	left : 65px;
+	top : 202px;
+	width : 94px;
+	height : 29px;
+	background-image: url(imagens/botoes%20parte%201/botao_r3_c1.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+
+#tecno{
+	position : absolute;
+	left : 65px;
+	top : 237px;
+	width : 95px;
+	height : 28px;
+	background-image: url(imagens/botoes%20parte%201/botao_r5_c1.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+
+#acustico{
+	position : absolute;
+	left : 65px;
+	top : 272px;
+	width : 95px;
+	height : 29px;
+	background-image: url(imagens/botoes%20parte%201/botao_r7_c1.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+input[type=checkbox].botoes_b {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_b + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_b:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_r {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_r + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_r:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+input[type=checkbox].botoes_d2 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d2 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d2:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d3 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d3 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d3:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input[type=checkbox].botoes_d4 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d4 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d4:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input[type=checkbox].botoes_d5 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d5 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d5:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input[type=checkbox].botoes_d6 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d6 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d6:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d7 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d7 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d7:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d8 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d8 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d8:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+input[type=checkbox].botoes_d9 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d9 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d9:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d10 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d10 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d10:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }        
+
+ input[type=checkbox].botoes_d11 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d11 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d11:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d12 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d12 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d12:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }

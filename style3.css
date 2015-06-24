@@ -1,0 +1,882 @@
+body{
+
+/*background-color:#1E1E1E;*/
+}
+#principal {
+	height: 605px;
+	width: 902px;
+	position: absolute;
+	background-position: center;
+	left: 105px;
+	top: 0px;
+	background-repeat: no-repeat;
+	background-image: url(imagens/images/fundo-vermelho.jpg);
+}
+
+#home {
+	background-image: url(imagens/images/home_03.jpg);
+	position : absolute;
+	left : 62px;
+	top : 43px;
+	width : 233px;
+	height : 51px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#logo{
+  background-image:url(imagens/images/logodj_03.jpg);
+  position : absolute ;
+  left : 712px;
+  top : 46px;
+  width : 127px;
+  height : 63px;
+}
+#mixer{
+	position : absolute;
+	left : 183px;
+	top : 170px;
+	width : 584px;
+	height : 316px;
+	background-repeat: no-repeat;
+	background: center;
+	background-image: url(imagens/retangulos/retan-vermelho.png);
+}
+
+#house{
+	position : absolute;
+	left : 60px;
+	top : 167px;
+	width : 96px;
+	height : 28px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+	background-color: #1E1E1E;
+	background-image: url(imagens/images/images/house_03.jpg);
+}
+
+#eletro{
+	position : absolute;
+	left : 60px;
+	top : 218px;
+	width : 94px;
+	height : 29px;
+	background-image: url(imagens/botoes%20parte%201/botao_r3_c1.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+
+#tecno{
+	position : absolute;
+	left : 57px;
+	top : 268px;
+	width : 126px;
+	height : 36px;
+	background-image: url(imagens/images/images/tecno_m_03.jpg);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+	background-color: #1E1E1E;
+}
+
+#acustico{
+	position : absolute;
+	left : 60px;
+	top : 328px;
+	width : 95px;
+	height : 29px;
+	background-image: url(imagens/botoes%20parte%201/botao_r7_c1.png);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-repeat: no-repeat;
+}
+
+#linha1{
+	position : absolute;
+	left : 33px;
+	top : 44px;
+	width : 399px;
+	height : 25px;
+}
+
+#linha2{
+	position : absolute;
+	left : 33px;
+	top : 77px;
+	width : 400px;
+	height : 24px;
+}
+#linha3{
+	position : absolute;
+	left : 32px;
+	top : 112px;
+	width : 401px;
+	height : 24px;
+}
+
+#linha4{
+	position : absolute;
+	left : 32px;
+	top : 144px;
+	width : 401px;
+	height : 24px;
+}
+#linha5{
+	position : absolute;
+	left : 31px;
+	top : 177px;
+	width : 401px;
+	height : 24px;
+}
+
+#linha6{
+	position : absolute;
+	left : 31px;
+	top : 211px;
+	width : 401px;
+	height : 24px;
+}
+
+#linha7{
+	position : absolute;
+	left : 30px;
+	top : 246px;
+	width : 402px;
+	height : 24px;
+}
+
+#play{
+	background-image: url(imagens/play.png);
+	position : absolute;
+	height: 28px;
+	width: 28px;
+	left : 475px;
+	top : 282px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#pause{
+	background-image: url(imagens/pause.png);
+	position : absolute;
+	height: 28px;
+	width: 28px;
+	left : 506px;
+	top : 282px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#muted{
+	background-image: url(imagens/mute.png);
+	position : absolute;
+	height: 28px;
+	width: 28px;
+	left : 537px;
+	top : 282px;
+	border-top-color: none;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+#barra{
+	background-image: url(imagens/barra.png);
+	position : absolute;
+	left : 799px;
+	top : 168px;
+	width : 48px;
+	height : 186px;
+	background-repeat: no-repeat;
+	border: none;
+}
+
+input[type=checkbox].botoes_b {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_b + label.css-label {
+            padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+							
+
+        }
+
+        input[type=checkbox].botoes_b:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_r {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_r + label.css-label {
+           padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_r:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+input[type=checkbox].botoes_d2 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d2 + label.css-label {
+            padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d2:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d3 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d3 + label.css-label {
+            padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d3:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input[type=checkbox].botoes_d4 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d4 + label.css-label {
+           padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d4:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input[type=checkbox].botoes_d5 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d5 + label.css-label {
+            padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d5:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input[type=checkbox].botoes_d6 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d6 + label.css-label {
+           padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d6:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d7 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d7 + label.css-label {
+           padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d7:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d8 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d8 + label.css-label {
+           padding-left:19px;
+							height:19px; 
+							display:inline-block;
+							line-height:19px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:19px;
+							vertical-align:middle;
+							cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d8:checked + label.css-label {
+            background-position: 0 -19px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+input[type=checkbox].botoes_d9 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d9 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d9:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d10 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d10 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d10:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(imagens/checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }        
+
+ input[type=checkbox].botoes_d11 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d11 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d11:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+input[type=checkbox].botoes_d12 {
+            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+        }
+
+        input[type=checkbox].botoes_d12 + label.css-label {
+            padding-left:30px;
+            height:25px; 
+            display:inline-block;
+            line-height:25px;
+            background-repeat:no-repeat;
+            background-position: 0 0;
+            font-size:25px;
+            vertical-align:middle;
+            cursor:pointer;
+
+        }
+
+        input[type=checkbox].botoes_d12:checked + label.css-label {
+            background-position: 0 -25px;
+        }
+        label.css-label {
+            background-image:url(checkbox.png);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+#bpm {
+	position: absolute;
+	left: 381px;
+	top: 288px;
+	width: 79px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-image: none;
+	background-color: #CCCCCC;
+}
+#img_bpm {
+	position: absolute;
+	height: 25px;
+	width: 61px;
+	left: 315px;
+	top: 285px;
+	background-image: url(imagens/check_r2_c1.png);
+}
+.volume_img {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+}
+#volume1 {
+	position: absolute;
+	left: 480px;
+	top: 47px;
+	width: 80px;
+	;
+}
+.volume {
+	/*removes default webkit styles*/
+	-webkit-appearance: none;
+	/*fix for FF unable to apply focus style bug */
+	border: none;
+	/*required for proper track sizing in FF*/
+	width: 80px;
+	background-color: #4A4A4A;
+	;
+	;
+}
+.volume::-webkit-slider-runnable-track {
+    width: 80px;
+    height: 5px;
+    background:#E1EDB9;
+    border: none;
+    border-radius: 3px;
+}
+.volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+}
+.volume:focus {
+	outline: none;
+	background-color: #353535;
+}
+.volume:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+.volume::-moz-range-track {
+    width: 80px;
+    height: 5px;
+    background: #E1EDB9;
+    border: none;
+    border-radius: 3px;
+}
+.volume::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom, #E1EDB9 0, #E1EDB9 100%);
+}
+
+/*hide the outline behind the border*/
+.volume:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+.volume::-ms-track {
+    width: 80px;
+    height: 5px;
+    
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+.volume::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+.volume::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+.volume::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background:#E1EDB9;
+}
+.volume:focus::-ms-fill-lower {
+    background: #888;
+}
+.volume:focus::-ms-fill-upper {
+    background: #ccc;
+}
+#volume2 {
+	position: absolute;
+	left: 480px;
+	top: 82px;
+	width: 81px;
+}
+#volume3 {
+	position: absolute;
+	left: 480px;
+	top: 116px;
+	width: 80px;
+}
+#volume4 {
+	position: absolute;
+	left: 480px;
+	top: 148px;
+	width: 14px;
+}
+#volume5 {
+	position: absolute;
+	left: 480px;
+	top: 183px;
+	width: 80px;
+}
+#volume6 {
+	position: absolute;
+	left: 480px;
+	top: 216px;
+	width: 82px;
+}
+#volume7 {
+	position: absolute;
+	left: 480px;
+	top: 250px;
+	width: 81px;
+}
+#vol_img1 {
+	position: absolute;
+	height: 23px;
+	width: 25px;
+	left: 440px;
+	top: 49px;
+}
+#vol_img2 {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+	left: 440px;
+	top: 81px;
+}
+#vol_img3 {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+	left: 440px;
+	top: 115px;
+}
+#vol_img4 {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+	left: 440px;
+	top: 146px;
+}
+#vol_img5 {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+	left: 440px;
+	top: 181px;
+}
+#vol_img6 {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+	left: 440px;
+	top: 214px;
+}
+#vol_img7 {
+	position: absolute;
+	height: 24px;
+	width: 27px;
+	left: 440px;
+	top: 249px;
+}
+.vol_img {
+	background-image: url(imagens/volume/volume-vermelho.png);
+}
+#home1 {
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	width: 43px;
+	height: 44px;
+	background-image: url(imagens/images/images/inicio_03.jpg);
+	border: none;
+	background-repeat: no-repeat;
+}
+#teoria {
+	position: absolute;
+	left: 2px;
+	top: 52px;
+	background-image: url(imagens/images/images/teoria_06.jpg);
+	height: 41px;
+	width: 42px;
+	border: none;
+	background-repeat: no-repeat;
+}
+#instr {
+	position: absolute;
+	left: 2px;
+	top: 95px;
+	background-image: url(imagens/images/images/instrucoes_09.jpg);
+	height: 39px;
+	width: 38px;
+	border: none;
+	background-repeat: no-repeat;
+}
+#about {
+	position: absolute;
+	left: 2px;
+	top: 139px;
+	background-image: url(imagens/images/images/botoes-laterais_11.jpg);
+	height: 38px;
+	width: 38px;
+	border: none;
+	background-repeat: no-repeat;
+}
+#contador {
+	position: absolute;
+	height: 25px;
+	width: 399px;
+	left: 32px;
+	top: 7px;
+}
+input[type=checkbox].count {
+							position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+						}
+
+						input[type=checkbox].count + label.css-label1 {
+							padding-left:19px;
+							height:14px; 
+							display:inline-block;
+							line-height:14px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:14px;
+							vertical-align:middle;
+							cursor:pointer;
+
+						}
+
+						input[type=checkbox].count:checked + label.css-label1 {
+							background-position: 0 -14px;
+						}
+						label.css-label1 {
+				background-image:url(png_.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}

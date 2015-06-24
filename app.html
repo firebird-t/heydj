@@ -1,0 +1,954 @@
+﻿<!doctype html>
+<meta charset="UTF-8">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style1.css">
+<link rel="stylesheet" type="text/css" href="js/fancy/source/jquery.fancybox.css">
+<link rel="stylesheet" type="text/css" href="js/introjs/introjs.css">
+<link rel="stylesheet" type="text/css" href="js/jquery.ilightbox-master/css/jquery.lightbox.css">
+<link rel="stylesheet" type="text/css" href="js/colorbox-master/colorbox-master/example1/colorbox.css"> 
+<script src="createjs.js"></script>
+<script src="recorder.js"></script>
+<script src="js/fancy/lib/jquery-1.10.1.min.js"></script>
+<script src="js/fancy/source/jquery.fancybox.js"></script>
+<script src="js/fancy/source/jquery.fancybox.pack.js"></script>
+<script src="js/introjs/intro.js"></script>
+<script src="js/jquery.ilightbox-master/js/jquery.lightbox.min.js"></script>
+<script src="js/colorbox-master/colorbox-master/jquery.colorbox-min.js"></script>
+<title>Hey DJ!!!</title>
+</head>
+
+<script>
+var audio;
+
+ var som1,som2,som3,som4,som5,som6,som7,som8,som9,som10,som11,som12,som13;
+
+  var controle1,controle2,controle3,controle4,controle5,controle6,controle7,controle8,controle9,controle10,controle11,controle12,controle13;
+
+  var mtr_bpm; //Monitora BPM
+  var gravacao = false;
+
+  var status_rec = false;
+
+  //Indicador de Tempo
+ var point  
+  //Barra de Marcação
+
+  var barra;
+ 
+  //Variavel de com o caminho e o id de cada sample
+  //var sons = new createjs.LoadQueue();
+  //sons.installPlugin(createjs.Sound);
+ 
+  sons = [{src:"clap.wav",id:"clap"},
+    {src:"closed.wav",id:"closed"},
+    {src:"crash.wav",id:"crash"},
+    {src:"high.wav",id:"high"},
+    {src:"kick.wav",id:"kick"},
+    {src:"low.wav",id:"low"},
+    {src:"mid.wav",id:"mid"},
+    {src:"open.wav",id:"open"},
+    {src:"perc1.wav",id:"perc1"},
+    {src:"perc2.wav",id:"perc2"},
+    {src:"rim.wav",id:"rim"},
+    {src:"shake.wav",id:"shake"},
+    {src:"snare.wav",id:"snare"}
+    ]
+
+
+  //[{src:"drum.mp3",id:"drum"},{src:"drum2.mp3",id:"drum2"},{src:"clap.mp3",id:"clap"}];
+
+  //diretorio dos samples
+  var dir = "./sounds/house/";
+  //Objeto que armazena e checa se os botoes estão marcados
+  var itens = new Object;
+  var marcador;
+  marcador = false;
+  var contador = 0;
+  var controle;
+  var posicao;
+  var bpm = 500; //Controle de BPM
+  var rec; //Gravação
+   
+  var xmlhttp = new XMLHttpRequest();
+  //xmlhttp.open("GET",sons,false);
+  //xmlhttp.send();
+ 
+try {
+   var navigator = window.navigator;
+    navigator.getUserMedia = (
+    navigator.mediaDevices.getUserMedia||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia
+);
+
+var Context = window.AudioContext || window.webkitAudioContext;
+var context = new Context();
+}
+catch(e){
+console.log("Change Your Browser")
+}
+
+//LightBox
+$(document).ready(function() {
+    $('a.lightbox').iLightbox({
+        type: 'image', //'image', 'ajax', 'iframe', 'swf' and 'html'
+        loop: true, //loop media
+        arrows: true, //show arrows
+        closeBtn: true, //show close button
+        title: null, //title
+        href: null, //link to media
+        content: null, //html content
+        beforeShow: function(a, b) {},
+        onShow: function(a, b) {},
+        beforeClose: function() {},
+        afterClose: function() {},
+        onUpdate: function(a) {},
+        template: {
+            container: '<div class="iLightbox-container"></div>',
+            image: '<div class="iLightbox-media"></div>',
+            iframe: '<div class="iLightbox-media iLightbox-iframe"></div>',
+            title: '<div class="iLightbox-details"></div>',
+            error: '<div class="iLightbox-error">The requested content cannot be loaded.<br/>Please try again later.</div>',
+            closeBtn: '<a href="#" class="iLightbox-close"></a>',
+            prevBtn: '<div class="iLightbox-btnPrev"><a href="javascript:;"></a></div>',
+            nextBtn: '<div class="iLightbox-btnNext"><a href="javascript:;"></a></div>'
+        }
+    });
+});
+
+
+
+
+  function reg_sons(){
+      //FancyApp
+     $(".fancybox").fancybox();
+          
+      //Registro de Plugins
+    createjs.Sound.registerPlugins([createjs.WebAudioPlugin,createjs.HTMLAudioPlugin]) 
+
+       var queue = new createjs.LoadQueue();
+       queue.installPlugin(createjs.Sound);
+       //createjs.Sound.initializeDefaultPlugins();
+             
+       //Carregamento de Sons
+       createjs.Sound.addEventListener("fileload", createjs.proxy(preload, this));
+       
+       //Registro de Sons
+       createjs.Sound.registerSounds(sons,dir);
+
+//Carrega volume
+      this.load_volume = function(){
+        var def_vol = document.getElementsByClassName('volume');
+            for(var i=0;i<def_vol.length;i++){
+             def_vol[i].value = 50;
+            }
+         };
+     
+
+     //Configura Volume pra cada uma das instâncias
+     this.setVol = function(){
+       controle2 = 0.5;
+       controle3 = 0.5;
+       controle4 = 0.5;
+       controle5 = 0.5;
+       controle6 = 0.5;
+       controle7 = 0.5;
+       controle8 = 0.5;
+       controle9 = 0.5;
+       controle10 = 0.5;
+       controle11 = 0.5;
+       controle12 = 0.5;
+       controle13 = 0.5;
+     }
+
+//Define o volume de cada instância em 50%
+    load_volume();
+    setVol();
+
+    
+    //Marcador de Posição  
+    posicao = document.getElementById('ev');
+    barra = document.getElementById("tempo_");
+
+    //Elemento que altera o tempo musical
+    var mtr_bpm = document.getElementById("bpm")
+    
+    //Passando parametro pra função q altera o tempo da musica
+    fbpm(mtr_bpm);
+    
+   
+  }
+
+  function preload(data){
+    console.log(data);
+  }
+
+
+  //Muda BPM
+
+  function fbpm(valor){
+        bpm = parseInt((240 -(valor.value))/0.960);
+        console.log(bpm);
+  }
+
+  //Play/Pause
+  function mudastatus(valor){
+           marcador = true;
+           toca();         
+ 
+         }
+//Samples
+
+ 
+  function toca(){	
+    var ultimo_ponto = point.length -1;
+	 if(marcador == true){
+		 
+      //Objetos HTML
+       if(contador == 0){
+       point[ultimo_ponto].checked = false;
+	   point[contador].checked = true
+       }
+       if(contador >0){
+       point[contador-1].checked = false;	
+       point[contador].checked = true	;
+       }
+
+       itens.caixa  = document.getElementsByClassName('botoes_b'); 
+       itens.caixa2 = document.getElementsByClassName('botoes_r');
+       itens.caixa3 = document.getElementsByClassName('botoes_d2');
+       itens.caixa4 = document.getElementsByClassName('botoes_d3');
+       itens.caixa5 = document.getElementsByClassName('botoes_d4');
+       itens.caixa6 = document.getElementsByClassName('botoes_d5');
+       itens.caixa7 = document.getElementsByClassName('botoes_d6');
+       itens.caixa8 = document.getElementsByClassName('botoes_d7');
+       // itens.caixa9 = document.getElementsByClassName('botoes_d8');
+       // itens.caixa10 = document.getElementsByClassName('botoes_d9');
+       // itens.caixa11 = document.getElementsByClassName('botoes_d10');
+       // itens.caixa12 = document.getElementsByClassName('botoes_d11');
+       // itens.caixa13 = document.getElementsByClassName('botoes_d12');
+//Checa Instâncias
+      if(itens.caixa[contador].checked){
+             som1 = createjs.Sound.play("kick",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle1});      
+        }
+
+      if(itens.caixa2[contador].checked){
+            som2 = createjs.Sound.play("closed",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle2});
+      
+        }
+
+      if(itens.caixa3[contador].checked){
+            som3 = createjs.Sound.play("open",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle3}); 
+       }
+
+      if(itens.caixa4[contador].checked){
+            som4 = createjs.Sound.play("snare",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle4});
+       }
+
+      if(itens.caixa5[contador].checked){
+            som5 = createjs.Sound.play("perc1",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle5});
+       }
+
+      if (itens.caixa6[contador].checked){
+            som6 = createjs.Sound.play("perc2",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle6});
+       }
+   
+      if(itens.caixa7[contador].checked){
+            som7 = createjs.Sound.play("high",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle7});
+       }
+
+      // if(itens.caixa8[contador].checked){
+      //       som8 = createjs.Sound.play("mid",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle8});
+      // } 
+
+      // if(itens.caixa9[contador].checked){
+      //       som9 = createjs.Sound.play("low",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle9});
+      // }
+
+      // if(itens.caixa10[contador].checked){
+      //      som10 = createjs.Sound.play("shake",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle10});
+      // }
+
+      // if(itens.caixa11[contador].checked){
+      //      som11 = createjs.Sound.play("rim",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle11});
+      // }
+
+      // if(itens.caixa12[contador].checked){
+      //      som12 = createjs.Sound.play("clap",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle12});
+      // }
+       
+      // if(itens.caixa13[contador].checked){
+      //   som13 = createjs.Sound.play("crash",{interrupt: createjs.Sound.INTERRUPT_ANY,volume:controle13});
+      // }
+
+    
+    //Marcador
+      
+       //console.log(contador);
+       contador++;
+      // barra.value = contador;
+
+      if(contador == document.getElementsByClassName('botoes_b').length){
+            contador = 0;
+      }
+
+      if (marcador == true){
+        setTimeout(function(){toca()},bpm);
+       
+      }
+    }
+  }
+
+//Pausa a Reprodução
+   function stop(){
+        createjs.Sound.stop();
+        marcador = false;
+     }
+
+  //Volume Principal
+  function volume(){
+        x = document.getElementById("volume").value;
+        createjs.Sound.setVolume(x/100);
+  }
+
+  //Volume das Instancias;
+
+
+  function vol_inst(id){
+       switch(id) {
+           case 1:
+               controle1 = document.getElementById("vol_som1").value / 100;
+               break;
+           case 2:
+               controle2 = document.getElementById("vol_som2").value / 100;
+               break;
+           case 3:
+               controle3 = document.getElementById("vol_som3").value / 100;   
+               break;   
+           case 4:
+               controle4 = document.getElementById("vol_som4").value / 100;
+               break;    
+          case 5:
+               controle5 = document.getElementById("vol_som5").value / 100;
+               break;
+          case 6:
+               controle6 = document.getElementById("vol_som6").value /100 ; 
+               break;
+          case 7:
+               controle7 = document.getElementById("vol_som7").value / 100;         
+               break;
+          // case 8:
+          //     controle8 = document.getElementById("vol_som8").value / 100;
+          //     break;
+          // case 9:
+          //     controle9 = document.getElementById("vol_som9").value /100;
+          //     break;
+          // case 10:
+          //     controle10 = document.getElementById("vol_som10").value /100;
+          //     break;
+          // case 11:
+          //     controle11 = document.getElementById("vol_som11").value /100;
+          //     break;
+          // case 12:
+          //     controle12 = document.getElementById("vol_som12").value /100;
+          //     break;
+          // case 13:
+          //     controle13 = document.getElementById("vol_som13").value /100;
+          //     break;   
+                             
+      }
+  }
+  //
+  var mudo = 0;
+
+//Função que Ativa o Mute
+function muted(){
+	if(mudo== 0){
+	createjs.Sound.setMute(true)
+    mudo = 1;
+   }else{
+   	createjs.Sound.setMute(false);
+   	mudo = 0;
+   }
+}
+
+//Function Muda Pagina
+  function newpage(id){
+    if(id.id == "house"){
+        window.location.assign("app.html");
+      }  
+    if(id.id == "eletro"){     
+     window.location.assign("eletro.html");
+    }
+    if(id.id == "tecno"){     
+     window.location.assign("tecno.html");
+     }
+     if(id.id == "acustico"){ 
+     window.location.assign("acustico.html");
+  }
+    if(id.id == "home1"){
+    	window.location.assign("inicio.html");
+    }
+    if(id.id == "about"){
+    	window.location.assign("about.html");
+    }
+    if(id.id == "teoria"){
+
+    }
+}
+
+
+//Função Responsável pela gravação
+var mediaStream;
+//var rec;
+
+var media;
+
+function record(){
+    status_rec = true;
+    rec.record();
+    }
+
+
+//Pausa gravação e libera o link pra download
+function stop_record(){
+  status_rec = false;
+ //Para a gravação
+  rec.stop();
+  rec.exportWAV(function(blob){
+ // Recorder.forceDownload(blob,["gravacao.wav"])
+  var download = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  var linkText = document.createTextNode("my title text");
+  a.appendChild(linkText);
+  a.title = "download";
+  a.href = download;
+  document.body.appendChild(a);
+
+})
+rec.clear();
+}
+
+function background(valor){
+ if(valor.id == "instr"){
+	 valor.style.backgroundImage='url(imagens/botoesdomenudoapp/duvida_on.png)';
+ }
+ if(valor.id == "home1"){
+	  valor.style.backgroundImage='url(imagens/botoesdomenudoapp/home_on.png)';
+ }
+ if(valor.id == "about"){
+	 valor.style.backgroundImage='url(imagens/botoesdomenudoapp/sobre_on.png)';
+ }
+ if(valor.id == "teoria"){
+	valor.style.backgroundImage='url(imagens/botoesdomenudoapp/teoria_on.png)'; 
+}
+if(valor.id == "logo"){
+	valor.style.backgroundImage='url(imagens/botoesdomenudoapp/rick_on.png)';
+}
+}
+
+function muda(valor){
+ if(valor.id == "instr"){
+	 valor.style.backgroundImage='url(imagens/botoesdomenudoapp/duvida-off.png)';
+ }
+ if(valor.id == "home1"){
+	  valor.style.backgroundImage='url(imagens/botoesdomenudoapp/home_off.png)';
+ }
+ if(valor.id == "about"){
+	 valor.style.backgroundImage='url(imagens/botoesdomenudoapp/sobre_off.png)';
+ }
+ if(valor.id == "teoria"){
+	valor.style.backgroundImage='url(imagens/botoesdomenudoapp/teoria_off.png)'; 
+}
+if(valor.id == "logo"){
+	valor.style.backgroundImage='url(imagens/botoesdomenudoapp/rick_off.png)';
+}
+}
+  
+function divclick(){
+	$.colorbox({transition:"none",width:830,height:500,href:"sobre.html"});
+}
+</script>
+<body onload="reg_sons();">
+
+<div id="principal">
+ 
+  <input type="button" id="house" onclick="newpage(this);" data-position="down" data-intro=" Escolha o rítmo que deseja tocar" data-step="1">
+  <input type="button" id="eletro" onclick="newpage(this)";>
+  <input type="button" id="tecno" onclick="newpage(this)";>
+  <input type="button" id="acustico" onclick="newpage(this)";>
+
+<div id="home"></div>
+<input type="button" id="logo" onmouserover="background(this)" onmouseout="muda(this)">
+<div id="barra">
+<div id="home1" onclick="newpage(this);" onMouseOver="background(this)" onmouseout="muda(this)"></div>
+<div id="teoria" onclick="newpage(this);" onMouseOver="background(this)" onmouseout="muda(this)"></div>
+<div id="instr" onMouseOver="background(this)"onclick="introJs().start();" onmouseout="muda(this)"></div>
+<div class="iframe" id="about" onMouseOver="background(this)" onmouseout="muda(this)" onclick="divclick();"></div>
+</div>
+<div id="mixer" data-position="right" data-intro="Cada caixa dessas é uma representação de batida. Cada linha faz um som diferente. Vai marcando aí de acordo com a sua escolha, beleza?" data-step="2">
+  <div id="img_bpm"></div>
+  <input id="bpm" type="number" min="10" max="150" value="40" onChange="fbpm(this)" data-position="left" data-intro="Aqui você altera a velocidade" data-step="3">
+ <input type="button" id="play" onclick="toca();" data-position="down" data-intro="Vai fundo no play e ouve o que você produziu!" data-step="4">
+<input type="button" id="pause" onclick="stop();">
+<input type="button"  id="muted" name="Mute" >
+<div id="contador">
+ <input class="count" type="checkbox" id="count1"></input>
+           <label class="css-label1" for="count1"></label>
+           <input class="count" type="checkbox" id="count2"></input>
+           <label class="css-label1" for="count2"></label>
+           <input class="count" type="checkbox" id="count3"></input>
+           <label class="css-label1" for="count3"></label>
+           <input class="count" type="checkbox" id="count4"></input>
+           <label class="css-label1" for="count4"></label>
+           <input class="count" type="checkbox" id="count5"></input>
+           <label class="css-label1" for="count5"></label>
+           <input class="count" type="checkbox" id="count6"></input>
+           <label class="css-label1" for="count6"></label>
+           <input class="count" type="checkbox" id="count7"></input>
+           <label class="css-label1" for="count7"></label>
+           <input class="count" type="checkbox" id="count8"></input>
+           <label class="css-label1" for="count8"></label>
+           <input class="count" type="checkbox" id="count9"></input>
+           <label class="css-label1" for="count9"></label>
+           <input class="count" type="checkbox" id="count10"></input>
+           <label class="css-label1" for="count10"></label>
+           <input class="count" type="checkbox" id="count11"></input>
+           <label class="css-label1" for="count11"></label>
+           <input class="count" type="checkbox" id="count12"></input>
+           <label class="css-label1" for="count12"></label>
+           <input class="count" type="checkbox" id="count13"></input>
+           <label class="css-label1" for="count13"></label>
+           <input class="count" type="checkbox" id="count14"></input>
+           <label class="css-label1" for="count14"></label>
+           <input class="count" type="checkbox" id="count15"></input>
+           <label class="css-label1" for="count15"></label>
+           <input class="count" type="checkbox" id="count16"></input>
+           <label class="css-label1" for="count16"></label>
+           
+</div>
+<script>
+    //BPM
+
+           mtr_bpm = document.getElementById("bpm");
+           console.log("bpm");
+           mtr_bpm.addEventListener("click",fbpm(this));
+</script>
+
+<div id="linha1">
+  <input id="checkboxG4" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG4"></label>
+
+        <input id="checkboxG5" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+      <label class="css-label" for="checkboxG5"></label>
+
+        <input id="checkboxG6" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG6"></label>
+
+        <input id="checkboxG7" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG7"></label>
+
+        <input id="checkboxG" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG"></label>
+
+        <input id="checkboxG8" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG8"></label>
+
+        <input id="checkboxG9" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG9"></label>
+
+        <input id="checkboxG#" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG#"></label>
+
+        <input id="checkboxG$" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG$"></label>
+
+        <input id="checkboxG0" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG0"></label>
+
+        <input id="checkboxG1" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxG1"></label>
+
+        <input id="checkboxG2" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxG2"></label>
+
+        <input id="checkboxG%" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxG%"></label>
+            <input id="checkboxG*" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxG*"></label>
+       
+        <input id="checkboxGH" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxGH"></label>
+
+        <input id="checkboxGH*" class="botoes_b" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxGH*"></label>
+</div>
+  <div id="vol_img1" class="vol_img">
+   </div>
+  <div id="volume1" class="volume1">
+  <input type="range" class="volume" id="vol_som1" min="0" max="100" onClick="vol_inst(1);">
+  </div>
+<div id="linha2"> 
+<input id="checkboxB1" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB1"></label>
+
+        <input id="checkboxB3" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB3"></label>
+
+        <input id="checkboxB4" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB4"></label>
+
+        <input id="checkboxB5" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB5"></label>
+
+        <input id="checkboxB6" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB6"></label>
+
+        <input id="checkboxB7" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB7"></label>
+
+        <input id="checkboxB8" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB8"></label>
+
+        <input id="checkboxB9" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB9"></label>
+
+        <input id="checkboxB10" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB10"></label>
+
+        <input id="checkboxB11" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB11"></label>
+
+        <input id="checkboxB12" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxB12"></label>
+
+        <input id="checkboxB13" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxB13"></label>
+
+        <input id="checkboxB14" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxB14"></label>
+
+        <input id="checkboxB15" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB15"></label>
+       
+        <input id="checkboxB16" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxB16"></label>
+
+        <input id="checkboxB17" class="botoes_r" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxB17"></label>
+    </div>
+    <div id="vol_img2" class="vol_img">
+   </div>
+    <div id="volume2" class="volume1">
+<input type="range" id="vol_som2" class="volume" min="0" max="100" onClick="vol_inst(2);">
+</div>
+<div id="linha3">
+  <input id="checkboxC1" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC1"></label>
+
+        <input id="checkboxC3" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC3"></label>
+
+        <input id="checkboxC4" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC4"></label>
+
+        <input id="checkboxC5" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC5"></label>
+
+        <input id="checkboxC6" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+      <label class="css-label" for="checkboxC6"></label>
+
+        <input id="checkboxC7" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC7"></label>
+
+        <input id="checkboxC8" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC8"></label>
+
+        <input id="checkboxC9" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC9"></label>
+
+        <input id="checkboxC10" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC10"></label>
+
+        <input id="checkboxC11" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC11"></label>
+
+        <input id="checkboxC12" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxC12"></label>
+
+        <input id="checkboxC13" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxC13"></label>
+
+        <input id="checkboxC14" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxC14"></label>
+
+        <input id="checkboxC15" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC15"></label>
+       
+        <input id="checkboxC16" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxC16"></label>
+
+        <input id="checkboxC17" class="botoes_d2" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxC17"></label>
+</div>
+ <div id="vol_img3" class="vol_img">
+   </div>
+<div id="volume3" class="volume1">
+<input type="range" id="vol_som3" class="volume" min="0" max="100" onClick="vol_inst(3);">
+</div>
+<div id="linha4">
+  <input id="checkboxD1" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD1"></label>
+
+        <input id="checkboxD3" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD3"></label>
+
+        <input id="checkboxD4" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD4"></label>
+
+        <input id="checkboxD5" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD5"></label>
+
+        <input id="checkboxD6" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD6"></label>
+
+        <input id="checkboxD7" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD7"></label>
+
+        <input id="checkboxD8" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD8"></label>
+
+        <input id="checkboxD9" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD9"></label>
+
+        <input id="checkboxD10" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD10"></label>
+
+        <input id="checkboxD11" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD11"></label>
+
+        <input id="checkboxD12" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxD12"></label>
+
+        <input id="checkboxD13" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxD13"></label>
+
+        <input id="checkboxD14" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxD14"></label>
+
+        <input id="checkboxD15" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD15"></label>
+       
+        <input id="checkboxD16" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxD16"></label>
+
+        <input id="checkboxD17" class="botoes_d3" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxD17"></label>
+
+</div>
+ <div id="vol_img4" class="vol_img">
+   </div>
+<div id="volume4" class="volume1">
+<input type="range" id="vol_som4" class="volume" min="0" max="100" onClick="vol_inst(4);">
+</div>
+<div id="linha5">
+   <input id="checkboxE1" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE1"></label>
+
+        <input id="checkboxE3" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE3"></label>
+
+        <input id="checkboxE4" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE4"></label>
+
+        <input id="checkboxE5" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE5"></label>
+
+        <input id="checkboxE6" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE6"></label>
+
+        <input id="checkboxE7" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE7"></label>
+
+        <input id="checkboxE8" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE8"></label>
+
+        <input id="checkboxE9" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE9"></label>
+
+        <input id="checkboxE10" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE10"></label>
+
+        <input id="checkboxE11" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE11"></label>
+
+        <input id="checkboxE12" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxE12"></label>
+
+        <input id="checkboxE13" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxE13"></label>
+
+        <input id="checkboxE14" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxE14"></label>
+
+        <input id="checkboxE15" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE15"></label>
+       
+        <input id="checkboxE16" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxE16"></label>
+
+        <input id="checkboxE17" class="botoes_d4" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxE17"></label>
+</div>
+<div id="vol_img5" class="vol_img">
+   </div>
+<div id="volume5" class="volume1">
+<input type="range" id="vol_som5" class="volume" min="0" max="100" onClick="vol_inst(5);">
+</div>
+<div id="linha6">
+  <input id="checkboxF1" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF1"></label>
+
+        <input id="checkboxF3" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF3"></label>
+
+        <input id="checkboxF4" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF4"></label>
+
+        <input id="checkboxF5" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF5"></label>
+
+        <input id="checkboxF6" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF6"></label>
+
+        <input id="checkboxF7" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF7"></label>
+
+        <input id="checkboxF8" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF8"></label>
+
+        <input id="checkboxF9" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF9"></label>
+
+        <input id="checkboxF10" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF10"></label>
+
+        <input id="checkboxF11" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF11"></label>
+
+        <input id="checkboxF12" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxF12"></label>
+
+        <input id="checkboxF13" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxF13"></label>
+
+        <input id="checkboxF14" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxF14"></label>
+
+        <input id="checkboxF15" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF15"></label>
+       
+        <input id="checkboxF16" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxF16"></label>
+
+        <input id="checkboxF17" class="botoes_d5" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxF17"></label>
+</div>
+<div id="vol_img6" class="vol_img">
+   </div>
+<div id="volume6" class="volume1">
+<input type="range" id="vol_som6"  class="volume" min="0" max="100" onClick="vol_inst(6);">
+</div>
+<div id="linha7"><input id="checkboxI1" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI1"></label>
+
+        <input id="checkboxI3" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI3"></label>
+
+        <input id="checkboxI4" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI4"></label>
+
+        <input id="checkboxI5" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI5"></label>
+
+        <input id="checkboxI6" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI6"></label>
+
+        <input id="checkboxI7" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI7"></label>
+
+        <input id="checkboxI8" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI8"></label>
+
+        <input id="checkboxI9" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI9"></label>
+
+        <input id="checkboxI10" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI10"></label>
+
+        <input id="checkboxI11" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI11"></label>
+
+        <input id="checkboxI12" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxI12"></label>
+
+        <input id="checkboxI13" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxI13"></label>
+
+        <input id="checkboxI14" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxI14"></label>
+
+        <input id="checkboxI15" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI15"></label>
+       
+        <input id="checkboxI16" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+            <label class="css-label" for="checkboxI16"></label>
+
+        <input id="checkboxI17" class="botoes_d6" type="checkbox" name="checkboxG4"></input>
+           <label class="css-label" for="checkboxI17"></label>
+</div>
+<div id="vol_img7" class="vol_img">
+   </div>
+ <div id="volume7" class="volume1">
+ <input type="range" id="vol_som7" class="volume" min="0" max="100" onClick="vol_inst(7);">
+ </div>
+  </div>
+</div>
+   
+   <script type="text/javascript">
+            console.log("chamou");
+            play1 = document.getElementById('play');
+            play1.addEventListener('click',function(){mudastatus()});
+
+   
+
+             point = document.getElementsByClassName("count");
+
+             var mute = document.getElementById("muted");
+             mute.addEventListener("click",function(){muted();});
+
+
+             var logo = document.getElementById("logo");
+             logo.addEventListener("click",function(){window.location.assign("https://www.facebook.com/RickDamel?fref=ts")});
+       //Recording
+           
+          //   mtr_rec = document.getElementById("record");
+          //  mtr_rec.value = "GRAVAR";
+          //  mtr_rec.addEventListener('click',record(this));
+           
+          // var mtr_rec;
+
+         // function record(valor){
+         //    rec.record();
+         //  }
+          
+         //  function stop_rec(){
+         //    rec.stop();
+         //    rec.exportWAV(function(blob))
+         //  }
+
+         </script>
+</body>
+</html>
